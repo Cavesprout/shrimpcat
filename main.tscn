@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://coufkyujn1d5j"]
+
+[ext_resource type="PackedScene" uid="uid://cg8txdug3gpny" path="res://shrimpcat.tscn" id="1_yxlqs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0cybe"]
+distance = -415.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysrcq"]
+distance = -235.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o8gje"]
+normal = Vector2(1, 0)
+distance = -618.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_27t1o"]
+normal = Vector2(-1, 0)
+distance = -546.0
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.956418, 0.75768, 0.841329, 1)
+
+[node name="Border" type="StaticBody2D" parent="."]
+position = Vector2(618, 228)
+
+[node name="Ground" type="CollisionShape2D" parent="Border"]
+shape = SubResource("WorldBoundaryShape2D_0cybe")
+
+[node name="Ceiling" type="CollisionShape2D" parent="Border"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_ysrcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+shape = SubResource("WorldBoundaryShape2D_o8gje")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
+shape = SubResource("WorldBoundaryShape2D_27t1o")
+
+[node name="Shrimpcat" parent="." instance=ExtResource("1_yxlqs")]
+position = Vector2(466, 306)
