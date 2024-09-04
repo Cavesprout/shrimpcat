@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://coufkyujn1d5j"]
 
-[ext_resource type="PackedScene" uid="uid://cg8txdug3gpny" path="res://shrimpcat.tscn" id="1_yxlqs"]
+[ext_resource type="PackedScene" uid="uid://c8two2v1fqyyf" path="res://shrimpcat_modular.tscn" id="1_15bfk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0cybe"]
 distance = -415.0
@@ -44,5 +44,4 @@ shape = SubResource("WorldBoundaryShape2D_o8gje")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
 shape = SubResource("WorldBoundaryShape2D_27t1o")
 
-[node name="Shrimpcat" parent="." instance=ExtResource("1_yxlqs")]
-position = Vector2(466, 306)
+[node name="ShrimpcatModular" parent="." instance=ExtResource("1_15bfk")]

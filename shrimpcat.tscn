@@ -76,8 +76,6 @@ position = Vector2(-1, 35)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8qnen")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="Head"]
-
 [node name="Sprite2D2" type="Sprite2D" parent="Head"]
 position = Vector2(52.9, -25)
 scale = Vector2(0.2, 0.2)

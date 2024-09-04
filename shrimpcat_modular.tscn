@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://c8two2v1fqyyf"]
+
+[ext_resource type="Script" path="res://shrimpcat_modular.gd" id="1_1dtxl"]
+[ext_resource type="Script" path="res://head.gd" id="1_7q0ao"]
+[ext_resource type="Texture2D" uid="uid://run71y48cffw" path="res://art/shimpcat_head.png" id="2_2tan8"]
+[ext_resource type="Texture2D" uid="uid://cwyka25k21r5k" path="res://art/shimpcat_antenna_R.png" id="3_agvg0"]
+[ext_resource type="Texture2D" uid="uid://c7d1sy0m660fp" path="res://art/shimpcat_antenna_L.png" id="4_7u2an"]
+[ext_resource type="Texture2D" uid="uid://b7w341nol8ffh" path="res://art/shimpcat_tail.png" id="5_j3mbu"]
+[ext_resource type="Texture2D" uid="uid://wqyrgshtspeq" path="res://art/shimpcat_butt.png" id="6_qnlgo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_srwng"]
+radius = 46.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7sam"]
+radius = 34.0
+height = 92.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m7q1n"]
+radius = 29.0
+height = 70.0
+
+[node name="ShrimpcatModular" type="Node2D"]
+script = ExtResource("1_1dtxl")
+
+[node name="Head" type="RigidBody2D" parent="."]
+script = ExtResource("1_7q0ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="Head"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_2tan8")
+
+[node name="HeadCollider" type="CollisionShape2D" parent="Head"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_srwng")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Head"]
+position = Vector2(52, -56.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_agvg0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Head"]
+position = Vector2(-53, -55.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_7u2an")
+
+[node name="Butt" type="RigidBody2D" parent="."]
+position = Vector2(0, 192)
+
+[node name="Sprite2D" type="Sprite2D" parent="Butt"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_qnlgo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Butt"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d7sam")
+
+[node name="ButtPin" type="PinJoint2D" parent="Butt"]
+position = Vector2(0, -28)
+node_a = NodePath("..")
+
+[node name="Tail" type="RigidBody2D" parent="."]
+position = Vector2(0, 237)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Tail"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_j3mbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail"]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_m7q1n")
+
+[node name="TailPin" type="PinJoint2D" parent="Tail"]
+position = Vector2(0, -26)
+node_a = NodePath("..")
+node_b = NodePath("../../Butt")
+
+[connection signal="mouse_entered" from="Head" to="Head" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Head" to="Head" method="_on_mouse_exited"]
