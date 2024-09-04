@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var num_segments = 3
+@export var colorful = false
 var segment = load("res://segment_modular.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +17,8 @@ func _ready() -> void:
 		get_parent().get_node("Border").set_collision_mask_value(i+2, true)
 		new_segment.set_collision_layer_value(i+2, true)
 		new_segment.set_collision_mask_value(i+2, true)
+		if colorful:
+			new_segment.get_node("Sprite2D").modulate = Color(randf(), randf(), randf())
 	$Butt.position = Vector2(0, (num_segments+1) * 80)
 	$Butt/ButtPin.node_b = prev_segment.get_path()
 	move_child($Head, get_child_count())

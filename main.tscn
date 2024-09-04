@@ -49,3 +49,5 @@ shape = SubResource("WorldBoundaryShape2D_27t1o")
 
 [node name="ShrimpcatModular" parent="." instance=ExtResource("1_15bfk")]
 position = Vector2(615, 199)
+num_segments = 10
+colorful = true

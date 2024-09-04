@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgvhiyg2jth5w"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_kmdw0"]
+[ext_resource type="Texture2D" uid="uid://cip5droahcqoa" path="res://art/shimpcat_bg.png" id="2_dhjcg"]
+[ext_resource type="Texture2D" uid="uid://cqq3qi1d3ic13" path="res://art/shrimpact_title_0.png" id="3_xdl2o"]
+[ext_resource type="Texture2D" uid="uid://s8cd8go38np7" path="res://art/shrimpact_title_1.png" id="4_ja48f"]
+[ext_resource type="Texture2D" uid="uid://gg8jydw78p5a" path="res://art/shrimpact_title_2.png" id="5_eq83j"]
+[ext_resource type="Texture2D" uid="uid://c4uoc1pmfvc52" path="res://art/shrimpact_title_3.png" id="6_p4m1n"]
+[ext_resource type="Texture2D" uid="uid://bumlrxrpduymx" path="res://art/shrimpact_title_4.png" id="7_va1bw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i4rej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xdl2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ja48f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eq83j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p4m1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_va1bw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_kmdw0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.956418, 0.75768, 0.841329, 1)
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -482.0
+offset_top = -244.0
+offset_right = -282.0
+offset_bottom = -194.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
+[node name="SegmentLabel" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -313.0
+offset_right = 194.0
+offset_bottom = -263.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.624966, 0.18495, 0.768952, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Number of Segments:"
+vertical_alignment = 1
+
+[node name="SegmentField" type="LineEdit" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -940.063
+offset_top = -303.5
+offset_right = -873.0
+offset_bottom = -272.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "3"
+
+[node name="ColorfulLabel" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -270.0
+offset_right = 194.0
+offset_bottom = -220.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.623529, 0.184314, 0.768627, 1)
+text = "Colorful Mode:"
+vertical_alignment = 1
+
+[node name="ColorfulField" type="CheckBox" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1002.06
+offset_top = -260.5
+offset_right = -935.0
+offset_bottom = -229.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(770, 327)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_dhjcg")
+
+[node name="Shrimpact_Title" type="AnimatedSprite2D" parent="."]
+position = Vector2(591, 596)
+sprite_frames = SubResource("SpriteFrames_i4rej")
+
+[connection signal="text_changed" from="SegmentField" to="." method="_on_segment_field_text_changed"]
+[connection signal="toggled" from="ColorfulField" to="." method="_on_colorful_field_toggled"]
