@@ -15,3 +15,4 @@ func _ready() -> void:
 		
 	$Butt.position = Vector2(0, (num_segments+1) * 70)
 	$Butt/ButtPin.node_b = prev_segment.get_path()
+	move_child($Head, get_child_count())

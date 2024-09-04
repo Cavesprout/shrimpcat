@@ -14,7 +14,6 @@ height = 106.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_q446l"]
 
 [node name="SegmentModular" type="RigidBody2D"]
-gravity_scale = 0.0
 script = ExtResource("1_oj41l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
